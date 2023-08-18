@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:api": "cd api && flask test",
+    "test:api": "cd api && venv/bin/flask test",
     "start": "node server/server.js",
-    "start:server": "cd api && flask run --no-debugger",
+    "start:server": "cd api && venv/bin/flask run --no-debugger",
     "start:prod": "NODE_ENV=production node server/server.ts",
     "start:dev": "NODE_ENV=development node server/server.ts",
     "build": "NODE_ENV=production webpack",
