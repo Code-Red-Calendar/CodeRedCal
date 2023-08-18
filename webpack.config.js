@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: './src/App.tsx',
+  entry: './client/src/App.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
@@ -33,7 +33,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Development',
-      template: 'index.html'
+      template: 'client/index.html'
     }),
   ],
   devServer: {
@@ -44,7 +44,10 @@ module.exports = {
       publicPath: '/'
     },
     proxy: {
-      '/api': 'http://localhost:5000'
+      '/api': {
+        target: 'http://localhost:5000',
+        pathRewrite: {'^/api': ''},
+      }
     }
   }
 };
