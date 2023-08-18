@@ -6,13 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:api": "cd api && venv/bin/flask test",
-    "start": "node server/server.js",
-    "start:server": "cd api && venv/bin/flask run --no-debugger",
-    "start:prod": "NODE_ENV=production node server/server.ts",
-    "start:dev": "NODE_ENV=development node server/server.ts",
+    "start:prod": "NODE_ENV=production cd api && venv/bin/gunicorn --config gunicorn_config.py api:app",
+    "start:dev": "NODE_ENV=development cd api && venv/bin/flask run --no-debugger",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack serve",
-    "dev:all": "concurrently \"cross-env npm run start:dev\" \"cross-env npm run dev\""
+    "prod": "NODE_ENV=production nginx",
+    "dev:all": "concurrently \"cross-env npm run start:dev\" \"cross-env npm run dev\"",
+    "prod:all": "concurrently \"cross-env npm run start:prod\" \"cross-env npm run prod\"",
+    "stop:prod": "nginx -s stop && kill -9 `lsof -i:5000 -t`"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +21,8 @@
     "@types/express": "^4.17.17",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
     "jest": "^29.6.2",
