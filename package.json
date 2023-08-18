@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
+    "start:server": "cd server && .venv/bin/flask run --no-debugger",
     "start:prod": "NODE_ENV=production node server/server.ts",
     "start:dev": "NODE_ENV=development node server/server.ts",
     "build": "NODE_ENV=production webpack",
