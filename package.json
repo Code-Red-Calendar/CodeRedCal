@@ -21,7 +21,8 @@
     "docker-stop": "docker stop $(docker ps -a -q --filter status=running)",
     "image:prod-api": "docker build -f Dockerfile-api -t code-red-cal-api .",
     "image:prod-client": "docker build -f Dockerfile-client -t code-red-cal-client .",
-    "image:dev-client": "docker build -f Dockerfile-dev -t code-red-cal-dev ."
+    "image:dev-client": "docker build -f Dockerfile-dev -t code-red-cal-dev .",
+    "webpack:analyze": "webpack --json > stats.json"
   },
   "author": "",
   "license": "ISC",
@@ -34,6 +35,7 @@
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
     "jest": "^29.6.2",
+    "mini-css-extract-plugin": "^2.7.6",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.4",
     "typescript": "^5.1.6",
