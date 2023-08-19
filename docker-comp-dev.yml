@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  api:
+    image: code-red-cal-api
+  client:
+    image: code-red-cal-dev
+    command: npm run dev:docker
+    volumes:
+      - .:/app
+      - ./node_modules:/app/node_modules
+    ports:
+      - "8080:8080"

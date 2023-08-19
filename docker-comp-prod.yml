@@ -1,0 +1,7 @@
+services:
+  api:
+    image: code-red-cal-api
+  client:
+    image: code-red-cal-client
+    ports:
+      - "3000:80"

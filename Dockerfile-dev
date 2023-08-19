@@ -1,0 +1,9 @@
+# start FROM a base layer of node v18.17.1
+FROM node:18.17.1
+
+# Set up a WORKDIR for application in the container
+WORKDIR /app
+
+# nothing really needs to be done here as we'll mount the
+# local directory as a volume in order to sync things up
+# for the webpack dev server
