@@ -14,7 +14,9 @@
     "prod": "NODE_ENV=production nginx",
     "dev:all": "concurrently \"cross-env npm run start:dev\" \"cross-env npm run dev\"",
     "prod:all": "concurrently \"cross-env npm run start:prod\" \"cross-env npm run prod\"",
-    "stop:prod": "nginx -s stop && kill -9 `lsof -i:5000 -t`"
+    "stop:prod": "nginx -s stop && kill -9 `lsof -i:5000 -t`",
+    "docker-prod": "docker-compose -f docker-comp-prod.yml up",
+    "docker-stop": "docker stop $(docker ps -a -q --filter status=running)"
   },
   "author": "",
   "license": "ISC",
