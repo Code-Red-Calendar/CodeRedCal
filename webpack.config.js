@@ -39,15 +39,8 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: 8080,
-    static: {
-      directory: path.join(__dirname, 'dist'),
-      publicPath: '/'
-    },
     proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        pathRewrite: {'^/api': ''},
-      }
+      '/api': 'http://127.0.0.1:5000',
     }
   }
 };

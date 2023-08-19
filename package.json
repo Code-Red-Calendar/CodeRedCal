@@ -11,12 +11,17 @@
     "build": "NODE_ENV=production webpack",
     "build:prod": "NODE_ENV=production webpack --config webpack.config.prod.js",
     "dev": "NODE_ENV=development webpack serve",
+    "dev:docker": "NODE_ENV=development webpack serve --config webpack.config.dev.js",
     "prod": "NODE_ENV=production nginx",
     "dev:all": "concurrently \"cross-env npm run start:dev\" \"cross-env npm run dev\"",
     "prod:all": "concurrently \"cross-env npm run start:prod\" \"cross-env npm run prod\"",
     "stop:prod": "nginx -s stop && kill -9 `lsof -i:5000 -t`",
     "docker-prod": "docker-compose -f docker-comp-prod.yml up",
-    "docker-stop": "docker stop $(docker ps -a -q --filter status=running)"
+    "docker-dev": "docker-compose -f docker-comp-dev.yml up",
+    "docker-stop": "docker stop $(docker ps -a -q --filter status=running)",
+    "image:prod-api": "docker build -f Dockerfile-api -t code-red-cal-api .",
+    "image:prod-client": "docker build -f Dockerfile-client -t code-red-cal-client .",
+    "image:dev-client": "docker build -f Dockerfile-dev -t code-red-cal-dev ."
   },
   "author": "",
   "license": "ISC",

@@ -1,13 +1,7 @@
 services:
   api:
-    build:
-      context: .
-      dockerfile: Dockerfile-api
     image: code-red-cal-api
   client:
-    build:
-      context: .
-      dockerfile: Dockerfile-client
     image: code-red-cal-client
     ports:
       - "3000:80"
